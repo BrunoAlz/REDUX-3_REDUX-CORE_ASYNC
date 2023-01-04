@@ -1,0 +1,24 @@
+{
+  "name": "redux-3_redux-core_async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoAlz/REDUX-3_REDUX-CORE_ASYNC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrunoAlz/REDUX-3_REDUX-CORE_ASYNC/issues"
+  },
+  "homepage": "https://github.com/BrunoAlz/REDUX-3_REDUX-CORE_ASYNC#readme",
+  "dependencies": {
+    "axios": "^1.2.2",
+    "redux": "^4.2.0"
+  }
+}
