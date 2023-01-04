@@ -1,6 +1,16 @@
 const { createStore, applyMiddleware } = require("redux");
 const loggerMiddleware = require("redux-logger").createLogger();
 
+// CUSTOM MIDDLEWARE
+const customLogger = () => {
+  return (next) => {
+    return (action) => {
+      console.log("Action:", action);
+      next(action);
+    };
+  };
+};
+
 // INITIAL STATE
 const initalState = {
   posts: [],
@@ -36,7 +46,7 @@ const postReducer = (state = initalState, action) => {
 };
 
 // STORE
-const store = createStore(postReducer, applyMiddleware(loggerMiddleware));
+const store = createStore(postReducer, applyMiddleware(customLogger));
 
 // SUBSCRIBE
 store.subscribe(() => {
@@ -45,4 +55,4 @@ store.subscribe(() => {
 });
 
 // DISPATCH
-store.dispatch(fetchPostsRequest())
+store.dispatch(fetchPostsRequest());
