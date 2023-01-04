@@ -1,3 +1,5 @@
+const { createStore } = require("redux");
+
 // INITIAL STATE
 const initalState = {
   posts: [],
@@ -23,7 +25,9 @@ const fetchPostsFailed = () => {
 };
 
 // REDUCERS
+const postReducer = (state = initalState, action) => {};
 
 // STORE
+const store = createStore(postReducer);
 
 // DISPATCH
