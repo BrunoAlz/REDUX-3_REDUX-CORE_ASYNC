@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BrunoAlz/REDUX-3_REDUX-CORE_ASYNC#readme",
   "dependencies": {
     "axios": "^1.2.2",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6"
   }
 }
