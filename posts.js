@@ -1,4 +1,5 @@
-const { createStore } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
+const loggerMiddleware = require('redux-logger').createLogger()
 
 // INITIAL STATE
 const initalState = {
@@ -28,6 +29,6 @@ const fetchPostsFailed = () => {
 const postReducer = (state = initalState, action) => {};
 
 // STORE
-const store = createStore(postReducer);
+const store = createStore(postReducer, applyMiddleware(loggerMiddleware));
 
 // DISPATCH
