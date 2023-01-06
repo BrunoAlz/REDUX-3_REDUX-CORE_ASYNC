@@ -1,5 +1,12 @@
 const { createStore } = require("redux");
 
+// ACTION CONSTANTS
+
+const REQUEST_STARTED = "REQUEST_STARTED";
+const REQUEST_SUCCESS = "REQUEST_SUCCESS";
+const REQUEST_FAILED = "REQUEST_FAILED";
+
+
 // CUSTOM MIDDLEWARE
 const customLogger = () => {
   return (next) => {
@@ -13,31 +20,33 @@ const customLogger = () => {
 // INITIAL STATE
 const initalState = {
   posts: [],
+  error: "",
+  loading: false,
 };
 
 // ACTIONS
 const fetchPostsRequest = () => {
   return {
-    type: "REQUEST_STARTED",
+    type: REQUEST_STARTED,
   };
 };
 
 const fetchPostsSuccess = () => {
   return {
-    type: "REQUEST_SUCCESS",
+    type: REQUEST_SUCCESS,
   };
 };
 
 const fetchPostsFailed = () => {
   return {
-    type: "REQUEST_FAILED",
+    type: REQUEST_FAILED,
   };
 };
 
 // REDUCERS
 const postReducer = (state = initalState, action) => {
   switch (action.type) {
-    case "REQUEST_STARTED":
+    case REQUEST_STARTED:
       return {
         posts: ["HTML"],
       };
