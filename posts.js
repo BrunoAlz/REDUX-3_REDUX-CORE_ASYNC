@@ -1,11 +1,12 @@
-const { createStore } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
+const axios = require("axios");
+const thunk = require("redux-thunk").default;
 
 // ACTION CONSTANTS
 
 const REQUEST_STARTED = "REQUEST_STARTED";
 const REQUEST_SUCCESS = "REQUEST_SUCCESS";
 const REQUEST_FAILED = "REQUEST_FAILED";
-
 
 // CUSTOM MIDDLEWARE
 const customLogger = () => {
@@ -54,7 +55,7 @@ const postReducer = (state = initalState, action) => {
 };
 
 // STORE
-const store = createStore(postReducer);
+const store = createStore(postReducer, applyMiddleware(thunk));
 
 // SUBSCRIBE
 store.subscribe(() => {
