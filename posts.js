@@ -1,5 +1,4 @@
-const { createStore, applyMiddleware } = require("redux");
-const loggerMiddleware = require("redux-logger").createLogger();
+const { createStore } = require("redux");
 
 // CUSTOM MIDDLEWARE
 const customLogger = () => {
@@ -46,7 +45,7 @@ const postReducer = (state = initalState, action) => {
 };
 
 // STORE
-const store = createStore(postReducer, applyMiddleware(customLogger));
+const store = createStore(postReducer);
 
 // SUBSCRIBE
 store.subscribe(() => {
