@@ -9,14 +9,14 @@ const REQUEST_SUCCESS = "REQUEST_SUCCESS";
 const REQUEST_FAILED = "REQUEST_FAILED";
 
 // CUSTOM MIDDLEWARE
-const customLogger = () => {
-  return (next) => {
-    return (action) => {
-      console.log("Action:", action);
-      next(action);
-    };
-  };
-};
+// const customLogger = () => {
+//   return (next) => {
+//     return (action) => {
+//       console.log("Action:", action);
+//       next(action);
+//     };
+//   };
+// };
 
 // INITIAL STATE
 const initalState = {
@@ -52,6 +52,10 @@ const postReducer = (state = initalState, action) => {
         posts: ["HTML"],
       };
   }
+};
+
+const fetchPosts = () => {
+  return async  (dispatch) => {};
 };
 
 // STORE
