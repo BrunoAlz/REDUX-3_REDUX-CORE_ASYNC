@@ -32,13 +32,14 @@ const fetchPostsRequest = () => {
   };
 };
 
-const fetchPostsSuccess = () => {
+const fetchPostsSuccess = (posts) => {
   return {
     type: REQUEST_SUCCESS,
+    payload: posts,
   };
 };
 
-const fetchPostsFailed = () => {
+const fetchPostsFailed = (error) => {
   return {
     type: REQUEST_FAILED,
   };
@@ -55,7 +56,15 @@ const postReducer = (state = initalState, action) => {
 };
 
 const fetchPosts = () => {
-  return async  (dispatch) => {};
+  return async (dispatch) => {
+    try {
+      dispatch(fetchPostsRequest);
+      const data = await axios.get("https://jsonplaceholder.typcode.com/posts");
+      dispatch(fetchPostsSuccess(data));
+    } catch (error) {
+      dispatch(fetchPostsFailed(error.message));
+    }
+  };
 };
 
 // STORE
