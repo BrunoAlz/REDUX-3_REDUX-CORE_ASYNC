@@ -42,6 +42,7 @@ const fetchPostsSuccess = (posts) => {
 const fetchPostsFailed = (error) => {
   return {
     type: REQUEST_FAILED,
+    payload: error,
   };
 };
 
@@ -50,7 +51,20 @@ const postReducer = (state = initalState, action) => {
   switch (action.type) {
     case REQUEST_STARTED:
       return {
-        posts: ["HTML"],
+        ...state,
+        loading: true,
+      };
+    case REQUEST_SUCCESS:
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false,
+      };
+    case REQUEST_FAILED:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
       };
   }
 };
@@ -59,7 +73,7 @@ const fetchPosts = () => {
   return async (dispatch) => {
     try {
       dispatch(fetchPostsRequest);
-      const data = await axios.get("https://jsonplaceholder.typcode.com/posts");
+      const data = await axios.get("https://jsonplaceholder.typicode.com/psts");
       dispatch(fetchPostsSuccess(data));
     } catch (error) {
       dispatch(fetchPostsFailed(error.message));
@@ -77,4 +91,4 @@ store.subscribe(() => {
 });
 
 // DISPATCH
-store.dispatch(fetchPostsRequest());
+store.dispatch(fetchPosts());
